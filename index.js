@@ -41,8 +41,12 @@ window.onload = async () => {
     const card = clone.querySelector('.card');
     const image = card.querySelector('img');
     image.dataset.src = imgs[index].download_url;
-    const text = card.querySelector('.card__text');
     image.src = './placeholder-img.png';
+    // reserve initial dimentions of imare for the moment before the end of the loading of image to prevent layout flashing
+    // and as a result, calling the observer callback
+    image.width = '200';
+    image.height = '150';
+    const text = card.querySelector('.card__text');
     text.textContent = imgs[index].author;
 
     observer.observe(card);
